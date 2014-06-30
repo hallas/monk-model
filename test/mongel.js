@@ -17,6 +17,9 @@ Item.prototype.getRoundedPrice = function () {
 };
 
 co(function* () {
+  console.log('testing ensureIndex');
+  yield Item.ensureIndex('title');
+
   console.log('testing static remove');
   yield Item.remove();
 
