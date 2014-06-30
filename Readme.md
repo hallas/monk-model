@@ -5,7 +5,7 @@ generators, see the article [Working with Koa and Generators](https://medium.com
 Please notice that it is by design that when using a method such as
 `instance.save` the caller instance is not altered or modified, and that you
 must use the returned instance, as that is the latest representation of the
-document that we know of.
+doc that we know of.
 
 Most methods such as `.update` are available to both the instantiated objects
 but also as statics on the model it self.
@@ -41,7 +41,7 @@ $ npm test
 
 ## Usage
 
-When reading this documentation, just assume that every snippet of code is one
+When reading this docation, just assume that every snippet of code is one
 file, and look to previous snippets for missing variables.
 
 ### Models
@@ -68,7 +68,7 @@ returned instance.
 var item = yield item.save();
 ```
 
-You can use `Model.create` to instantiate a document that is saved and linked.
+You can use `Model.create` to instantiate a doc that is saved and linked.
 
 **create**
 
@@ -136,7 +136,7 @@ a model you can access the underlying collection as well.
 
 **static**
 
-Here we try to find a document but if it doesn't exists, we create and return
+Here we try to find a doc but if it doesn't exists, we create and return
 it.
 
 ```javascript

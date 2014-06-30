@@ -1,9 +1,9 @@
 
-var model = require('..');
-var co = require('co');
+var Mongel = require('..');
+var co     = require('co');
 var assert = require('assert');
 
-var Item = model('items', 'localhost/mongel-test');
+var Item = Mongel('items', 'mongodb://localhost/mongel-test');
 
 Item.findOrCreate = function* (doc) {
   var query = { title: doc.title };
@@ -26,10 +26,6 @@ co(function* () {
 
   var item = new Item({ title: 'Test A' });
 
-  console.log('testing instance isLinked');
-  assert(!item.isLinked());
-  assert.equal('Test A', item.title);
-
   console.log('testing instance save');
   item = yield item.save();
 
@@ -44,7 +40,6 @@ co(function* () {
 
   console.log('testing static create');
   item = yield Item.create({ title: 'Test B' });
-  assert(item.isLinked());
   assert.equal('Test B', item.title);
 
   console.log('testing instance update');
@@ -52,9 +47,8 @@ co(function* () {
   assert.equal('Test C', item.title);
 
   console.log('testing static update');
-  var count = yield Item.update({ _id: Item.collection.id(item._id) },
-    { $set: { title: 'Test D', price: 432.435 } });
-  assert.equal(1, count);
+  var result = yield Item.update({ _id: item._id }, { $set: { title: 'Test D', price: 432.435 } });
+  assert.equal(1, result.n);
 
   console.log('testing instance fetch');
   item = yield item.fetch();
