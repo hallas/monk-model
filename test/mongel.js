@@ -42,7 +42,7 @@ co(function* () {
   assert.equal(items.length, 0);
 
   console.log('testing static create');
-  item = yield Item.create({ title: 'Test B' });
+  item = yield Item.createOne({ title: 'Test B' });
   assert.equal('Test B', item.title);
 
   console.log('testing instance update');

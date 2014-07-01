@@ -1,6 +1,6 @@
 {
   "name": "mongel",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "author": "Christoffer Hallas <christoffer.hallas@gmail.com>",
   "description": "Small database models for MongoDB using generator goodness",
   "scripts": {
