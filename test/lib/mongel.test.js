@@ -208,6 +208,20 @@ describe('lib mongel', function () {
 
     });
 
+    describe('count', function () {
+
+      beforeEach(function* () {
+        yield Car.remove();
+        yield Car.createOne({ color: 'green', engine: 'V2' });
+      });
+
+      it('should count', function* () {
+        var count = yield Car.count();
+        assert.equal(count, 1);
+      });
+
+    });
+
   });
 
 });
