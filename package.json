@@ -1,12 +1,12 @@
 {
   "name": "mongel",
-  "version": "0.4.5",
+  "version": "1.0.0",
   "author": "Christoffer Hallas <christoffer.hallas@gmail.com>",
   "description": "Small database models for MongoDB using generator goodness",
   "scripts": {
-    "test": "node --harmony-generators test/mongel"
+    "test": "MOJN_ENV=test mocha --require co-mocha --harmony test/lib/**/*.test.js"
   },
-  "main": "index.js",
+  "main": "lib/mongel",
   "repository": {
     "type": "git",
     "url": "https://github.com/hallas/mongel"
@@ -19,11 +19,12 @@
     "generators"
   ],
   "dependencies": {
-    "mongodb": "^1.4.7"
+    "mongodb": "^1.4.23"
   },
   "devDependencies": {
-    "co": "3.0.4",
-    "mocha": "^1.20.1"
+    "co": "^4.0.1",
+    "co-mocha": "^1.1.0",
+    "mocha": "^2.0.1"
   },
   "license": "MIT",
   "engines": {

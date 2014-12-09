@@ -7,8 +7,14 @@ describe('lib mongel', function () {
 
     var Car;
 
-    before(function* () {
+    before(function (done) {
       Car = Mongel('items', 'mongodb://localhost/mongel-test');
+      Car.session.on('connected', function () {
+        done();
+      });
+    });
+
+    before(function* () {
       yield Car.dropIndexes();
       yield Car.remove();
     });
@@ -18,13 +24,14 @@ describe('lib mongel', function () {
     });
 
     it('should execute custom command', function* () {
-      var cars = yield Car.command(function (done) {
+      var cars = yield Car.session.command(function (db, done) {
         Car.collection.insert({ color: 'red', engine: 'V8' }, function (err, doc) {
           if (err) return done(err);
           done(null, doc);
         });
       });
       assert(Array.isArray(cars));
+
       var car = cars.shift();
       assert(car._id);
       assert.equal(car.color, 'red');
@@ -171,8 +178,9 @@ describe('lib mongel', function () {
       it('should find with cursor', function* () {
         var cursor = yield Car.findCursor();
         assert(cursor);
+
         var doc = yield function (done) {
-          cursor.next(done);
+          cursor.nextObject(done);
         };
         assert(doc);
         assert.equal(doc.color, 'blue');
