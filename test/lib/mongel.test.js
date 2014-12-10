@@ -1,5 +1,8 @@
-var Mongel = require('../..');
-var assert = require('assert');
+var model   = require('../..');
+var assert  = require('assert');
+var Session = require('prosession');
+
+var session = new Session('mongodb://localhost/mongel-test');
 
 describe('lib mongel', function () {
 
@@ -8,10 +11,9 @@ describe('lib mongel', function () {
     var Car;
 
     before(function (done) {
-      Car = Mongel('items', 'mongodb://localhost/mongel-test');
-      Car.session.on('connected', function () {
-        done();
-      });
+      //Car = model('items', 'mongodb://localhost/mongel-test');
+      Car = model('items', session);
+      Car.session.on('connected', done);
     });
 
     before(function* () {
