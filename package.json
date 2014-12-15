@@ -1,34 +1,27 @@
 {
   "name": "mongel",
-  "version": "1.0.2",
-  "author": "Christoffer Hallas <christoffer.hallas@gmail.com>",
-  "description": "Small database models for MongoDB using generator goodness",
-  "scripts": {
-    "test": "MOJN_ENV=test mocha --require co-mocha --harmony test/lib/**/*.test.js"
-  },
-  "main": "lib/mongel",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/hallas/mongel"
-  },
-  "keywords": [
-    "mongodb",
-    "monk",
-    "model",
-    "co",
-    "generators"
-  ],
-  "dependencies": {
-    "mongodb": "^1.4.23",
-    "prosession": "0.0.1"
+  "version": "2.0.0",
+  "description": "",
+  "main": "lib/mongel.js",
+  "directories": {
+    "test": "test"
   },
   "devDependencies": {
     "co": "^4.0.1",
     "co-mocha": "^1.1.0",
     "mocha": "^2.0.1"
   },
-  "license": "MIT",
-  "engines": {
-    "node": ">=0.11"
-  }
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --harmony --require co-mocha test/lib/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hallas/mongel.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hallas/mongel/issues"
+  },
+  "homepage": "https://github.com/hallas/mongel"
 }
